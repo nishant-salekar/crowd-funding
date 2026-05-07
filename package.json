@@ -1,0 +1,16 @@
+{
+  "name": "capdao",
+  "version": "1.0.0",
+  "description": "CapDAO — Decentralized Crowdfunding Platform",
+  "scripts": {
+    "chain":    "cd contracts && npx hardhat node",
+    "deploy":   "cd contracts && echo y | npx hardhat run scripts/deploy.js --network localhost",
+    "backend":  "cd backend  && node server.js",
+    "frontend": "cd frontend && npm run dev",
+    "dev": "concurrently --names \"CHAIN,BACKEND,FRONTEND\" --prefix-colors \"cyan,magenta,green\" \"npm run chain\" \"npm run backend\" \"npm run frontend\"",
+    "fresh": "concurrently --names \"CHAIN,DEPLOY,BACKEND,FRONTEND\" --prefix-colors \"cyan,yellow,magenta,green\" --kill-others-on-fail \"npm run chain\" \"npm run deploy && npm run backend\" \"npm run frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
